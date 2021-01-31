@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
         "target": "es6",
-        "outDir": "app/js"
+        "outDir": "Angular/alurabank/app/js",
+        "noEmitOnError": true
     },
     "include": [
-        "app/ts/**/*"
+        "Angular/alurabank/app/ts/**/*"
     ]
 }
