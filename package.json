@@ -1,0 +1,23 @@
+{
+  "name": "formacao-alura",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroEifler/Formacao-Alura.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedroEifler/Formacao-Alura/issues"
+  },
+  "homepage": "https://github.com/pedroEifler/Formacao-Alura#readme",
+  "dependencies": {
+    "typescript": "^2.3.2"
+  }
+}
