@@ -3,7 +3,8 @@
         "target": "es6",
         "outDir": "Angular/alurabank/app/js",
         "noEmitOnError": true,
-        "noImplicitAny": true
+        "noImplicitAny": true,
+        "removeComments": true
     },
     "include": [
         "Angular/alurabank/app/ts/**/*"
