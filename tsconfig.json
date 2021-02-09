@@ -4,7 +4,8 @@
         "outDir": "Angular/alurabank/app/js",
         "noEmitOnError": true,
         "noImplicitAny": true,
-        "removeComments": true
+        "removeComments": true,
+        "module": "System"
     },
     "include": [
         "Angular/alurabank/app/ts/**/*"
