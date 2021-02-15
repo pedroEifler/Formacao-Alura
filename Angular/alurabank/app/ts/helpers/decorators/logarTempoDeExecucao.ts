@@ -1,5 +1,3 @@
-import { JsxEmit } from "../../../../../../node_modules/typescript/lib/typescript";
-
 export function logarTempoDeExecucao(emSegundos: boolean = false) {
 
     return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
