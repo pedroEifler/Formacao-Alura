@@ -2,8 +2,8 @@ import { NegociacoesView, MensagemView } from "../views/index";
 import { Negociacoes, Negociacao, NegociacaoParcial } from "../models/index";
 import { domInject, throttle } from "../helpers/decorators/index";
 import { NegociacaoService } from "../services/index";
+import { imprime } from '../helpers/index';
 
-let timer = 0;
 export class NegociacaoController {
 
     @domInject("#data")
@@ -39,9 +39,12 @@ export class NegociacaoController {
         )
 
         this._negociacoes.adiciona(negociacao);
+        
+        imprime(negociacao, this._negociacoes);
 
         this._negociacoesView.update(this._negociacoes);
         this._mensagemView.update("Negociação adicionada com sucesso!");
+
     }
 
     private _ehDiaUtil(data: Date) {
@@ -67,12 +70,19 @@ export class NegociacaoController {
                     throw new Error(res.statusText);
                 }
             })
-            .then(negociacoes => {
-                negociacoes.forEach(negociacao =>
-                    this._negociacoes.adiciona(negociacao))
+            .then(negociacoesParaImportar => {
 
-                this._negociacoesView.update(this._negociacoes)
-            })
+                const negociacoesJaImportadas = this._negociacoes.paraArray();
+
+                negociacoesParaImportar
+                    .filter(negociacao => 
+                        !negociacoesJaImportadas.some(jaImportada => 
+                            negociacao.ehIgual(jaImportada)))
+                    .forEach(negociacao => 
+                    this._negociacoes.adiciona(negociacao));
+
+                this._negociacoesView.update(this._negociacoes);
+            });
     }
 }
 
