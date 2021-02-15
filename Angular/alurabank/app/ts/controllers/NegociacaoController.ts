@@ -39,7 +39,7 @@ export class NegociacaoController {
         )
 
         this._negociacoes.adiciona(negociacao);
-        
+
         imprime(negociacao, this._negociacoes);
 
         this._negociacoesView.update(this._negociacoes);
@@ -52,39 +52,36 @@ export class NegociacaoController {
     }
 
     @throttle(1000)
-    importaDados() {
+    async importaDados() {
 
-        function isOk(res: Response) {
-            if (res.ok) {
-                return res
-            } else {
-                throw new Error(res.statusText);
-            }
-        }
+        try {
+            const negociacoesParaImportar = await this._negociacaoService
+                .obterNegociacoes(res => {
 
-        this._negociacaoService
-            .obterNegociacoes(res => {
-                if (res.ok) {
-                    return res
-                } else {
-                    throw new Error(res.statusText);
-                }
-            })
-            .then(negociacoesParaImportar => {
+                    if (res.ok) {
+                        return res
+                    } else {
+                        throw new Error(res.statusText);
+                    }
+                });
 
-                const negociacoesJaImportadas = this._negociacoes.paraArray();
+            const negociacoesJaImportadas = this._negociacoes.paraArray();
 
-                negociacoesParaImportar
-                    .filter(negociacao => 
-                        !negociacoesJaImportadas.some(jaImportada => 
-                            negociacao.ehIgual(jaImportada)))
-                    .forEach(negociacao => 
+            negociacoesParaImportar
+                .filter(negociacao =>
+                    !negociacoesJaImportadas.some(jaImportada =>
+                        negociacao.ehIgual(jaImportada)))
+                .forEach(negociacao =>
                     this._negociacoes.adiciona(negociacao));
 
-                this._negociacoesView.update(this._negociacoes);
-            });
+            this._negociacoesView.update(this._negociacoes);
+        } catch (err) {
+            this._mensagemView.update(err.message)
+        }
+
     }
 }
+
 
 enum diasDaSemana {
     Domingo,
