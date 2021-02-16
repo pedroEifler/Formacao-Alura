@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "target": "es6",
-        "outDir": "Angular/alurabank/app/js",
+        "outDir": "alurabank/app/js",
         "noEmitOnError": true,
         "noImplicitAny": true,
         "removeComments": true,
@@ -10,6 +10,6 @@
         "experimentalDecorators": true
     },
     "include": [
-        "Angular/alurabank/app/ts/**/*"
+        "alurabank/app/ts/**/*"
     ]
 }
