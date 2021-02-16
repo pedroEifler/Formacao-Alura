@@ -1,0 +1,31 @@
+{
+  "name": "formacao-alura",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "watch": "tsc -w",
+    "server": "lite-server --baseDir=alurabank/app",
+    "start": "concurrently \"npm run watch\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroEifler/Formacao-Alura.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedroEifler/Formacao-Alura/issues"
+  },
+  "homepage": "https://github.com/pedroEifler/Formacao-Alura#readme",
+  "dependencies": {
+    "typescript": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/jquery": "^2.0.42",
+    "concurrently": "^3.4.0",
+    "lite-server": "^2.3.0"
+  }
+}
